@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>HealthBridge</title>
+<!--
+  La favicon sta qui dentro come data URI e non come file: il server
+  espone solo /app.css e /app.js, e un'icona non e' una rotta dell'API.
+-->
+<link rel="icon" href="data:image/png;base64,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">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>HealthBridge</h1>
+    <p id="freshness" class="dim" data-i18n="reading">…</p>
+  </div>
+  <button id="reload" type="button" data-i18n="reload" data-i18n-title="reloadTitle">…</button>
+</header>
+
+<p id="trouble" class="trouble" hidden></p>
+
+<section class="card">
+  <div class="cardhead">
+    <h2 data-i18n="heart">…</h2>
+    <div class="tabs" id="windows">
+      <button type="button" data-minutes="60">1 h</button>
+      <button type="button" data-minutes="360">6 h</button>
+      <button type="button" data-minutes="1440">24 h</button>
+    </div>
+  </div>
+
+  <p class="huge"><span id="bpm">—</span><span class="unit">bpm</span></p>
+
+  <!--
+    Il grafico lo disegna app.js dentro questo SVG. Vuoto qui e non un
+    placeholder: uno scheletro finto che compare per mezzo secondo e poi cambia
+    forma si legge come un salto, e questa pagina si ricarica da sola ogni
+    minuto.
+  -->
+  <svg id="chart" viewBox="0 0 720 220" preserveAspectRatio="none" data-i18n-label="heartOverTime"></svg>
+
+  <dl class="row" id="span"></dl>
+</section>
+
+<section class="card">
+  <h2 data-i18n="today">…</h2>
+  <dl class="grid" id="today"></dl>
+</section>
+
+<section class="card">
+  <h2 data-i18n="sleep">…</h2>
+  <div id="sleep"><p class="dim">—</p></div>
+</section>
+
+<section class="card">
+  <details id="diagnosis">
+    <summary><h2 data-i18n="whatsInside">…</h2></summary>
+    <div id="probe"><p class="dim" data-i18n="openToRead">…</p></div>
+  </details>
+</section>
+
+<section class="card" id="apihelp">
+  <h2 data-i18n="apiTitle">…</h2>
+  <div id="apibody"><p class="dim" data-i18n="reading">…</p></div>
+</section>
+
+<footer>
+  <p id="schedule" class="dim"></p>
+  <p class="dim" data-i18n="footerNote">…</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

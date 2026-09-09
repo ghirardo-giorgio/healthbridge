@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="tagline">I dati del braccialetto si leggono da un browser sulla stessa rete, o da qualunque cosa parli HTTP. Qui si accende la porta e si consegna la chiave.</string>
+
+    <string name="status_listening">In ascolto</string>
+    <string name="status_listening_resting">In ascolto, a riposo</string>
+    <string name="status_paused_until">In pausa fino alle %1$s</string>
+    <string name="status_off">Spento</string>
+    <string name="no_network">Collega il telefono al WiFi, oppure accendi l\'hotspot: senza una rete non c\'è un indirizzo da dare a nessuno.</string>
+
+    <string name="btn_start">Avvia il server</string>
+    <string name="btn_stop">Spegni</string>
+    <string name="btn_copy_link">Copia il link</string>
+    <string name="btn_open_here">Apri qui</string>
+    <string name="toast_copied">copiato</string>
+
+    <string name="qr_failed">il QR non si è disegnato, copia il link qui sotto</string>
+    <string name="qr_hint">Inquadralo con la fotocamera del PC o del tablet, oppure passa il link a mano.</string>
+
+    <string name="quiet_title">Quando tacere</string>
+    <string name="quiet_body">Fuori orario il server si spegne del tutto: niente porta, niente WiFi tenuto sveglio. Non si perde niente — Health Connect continua ad accumulare per conto suo, e la prima lettura del mattino rilegge all\'indietro.</string>
+    <string name="quiet_on">Fascia attiva</string>
+    <string name="quiet_always">Sempre acceso</string>
+    <string name="quiet_from">Tace: %1$s</string>
+    <string name="quiet_to">Torna: %1$s</string>
+    <string name="rest_after">A riposo dopo %1$d minuti senza richieste. Il riposo non chiude la porta: la prima lettura che arriva lo sveglia.</string>
+    <string name="minutes_short">%1$d min</string>
+
+    <plurals name="perms_missing">
+        <item quantity="one">Manca %1$d permesso</item>
+        <item quantity="other">Mancano %1$d permessi</item>
+    </plurals>
+    <string name="perms_body">Senza, il server risponde ma le letture tornano vuote. Il dialogo è di Health Connect: concedili tutti in una volta.</string>
+    <string name="perms_grant">Concedi i permessi</string>
+    <string name="hc_not_responding">Health Connect non risponde</string>
+
+    <string name="settings_title">Impostazioni</string>
+    <string name="port_label">Porta</string>
+    <string name="port_save">Salva la porta</string>
+    <string name="port_range">fra 1024 e 65535</string>
+    <string name="token_note">Cambiare la chiave chiude fuori chi era già collegato: dovranno rileggere il QR.</string>
+    <string name="token_renew">Rigenera la chiave</string>
+
+    <string name="language_title">Lingua</string>
+    <string name="language_system">Sistema</string>
+
+    <string name="battery_title">Il telefono può addormentare il server</string>
+    <string name="battery_body">Escludi HealthBridge dall\'ottimizzazione della batteria, altrimenti dopo qualche ora di schermo spento la porta smette di rispondere.</string>
+    <string name="battery_exclude">Escludi dall\'ottimizzazione</string>
+
+    <string name="failure_title">Il server non è partito</string>
+    <string name="port_failed">la porta %1$d non si è aperta</string>
+
+    <string name="notif_channel">Server</string>
+    <string name="notif_channel_desc">Mostra che il telefono sta rispondendo sulla rete</string>
+    <string name="notif_title">HealthBridge in ascolto</string>
+    <string name="notif_stop">Spegni</string>
+    <string name="notif_no_network">in attesa di rete</string>
+    <string name="notif_resting">a riposo</string>
+    <string name="notif_quiet_at">tace alle %1$s</string>
+
+</resources>

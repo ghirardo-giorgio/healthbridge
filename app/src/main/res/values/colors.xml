@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Lo stesso nero della schermata (MainActivity.BACKGROUND). Sta anche qui
+        perche' il tema e lo splash vengono disegnati dal sistema prima che
+        esista una riga di Kotlin.
+    -->
+    <color name="background">#0E1116</color>
+</resources>

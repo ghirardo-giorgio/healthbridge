@@ -1,0 +1,209 @@
+/*
+  Gli stessi colori della schermata dell'app: chi passa dal telefono al browser
+  deve riconoscere di essere nello stesso posto, e due palette per la stessa
+  cosa sono due cose da tenere allineate a mano per sempre.
+*/
+:root {
+  --bg: #0E1116;
+  --card: #171C24;
+  --field: #222933;
+  --text: #E8EDF4;
+  --dim: #8D9AAC;
+  --muted: #4A5568;
+  --accent: #7CC4FF;
+  --good: #5FD68B;
+  --warn: #F0A868;
+  --alarm: #2A1D1B;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+  max-width: 52rem;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1 { font-size: 1.5rem; margin: 0; letter-spacing: -.02em; }
+h2 { font-size: 1.05rem; margin: 0; font-weight: 600; }
+p { margin: .35rem 0; }
+.dim { color: var(--dim); font-size: .875rem; }
+
+header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+button {
+  background: var(--field);
+  color: var(--text);
+  border: 0;
+  border-radius: 12px;
+  padding: .6rem 1rem;
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active { background: var(--muted); }
+
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.cardhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.tabs { display: flex; gap: 6px; }
+.tabs button { padding: .4rem .75rem; font-size: .82rem; }
+.tabs button[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
+
+.huge {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  font-weight: 600;
+  margin: .5rem 0 .2rem;
+  letter-spacing: -.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.huge .unit { font-size: 1rem; font-weight: 400; color: var(--dim); margin-left: .4rem; }
+
+/*
+  Il grafico si allarga con la finestra ma non cresce in altezza: un battito a
+  riposo e' quasi piatto, e dargli piu' spazio verticale ingrandirebbe solo il
+  rumore fino a farlo sembrare una corsa.
+*/
+#chart {
+  width: 100%;
+  height: 200px;
+  display: block;
+  margin: .5rem 0 .2rem;
+  overflow: visible;
+}
+
+.row { display: flex; gap: 1.5rem; margin: .5rem 0 0; flex-wrap: wrap; }
+.row div { margin: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  gap: 1rem 1.2rem;
+  margin: .9rem 0 0;
+}
+
+dt {
+  color: var(--dim);
+  font-size: .78rem;
+  text-transform: lowercase;
+  letter-spacing: .01em;
+}
+
+dd {
+  margin: .1rem 0 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+dd .unit { font-size: .8rem; font-weight: 400; color: var(--dim); margin-left: .25rem; }
+dd.empty { color: var(--muted); font-weight: 400; font-size: 1.1rem; }
+
+/* Le fasi del sonno: una barra sola, larga quanto la notte. */
+.stages { display: flex; height: 26px; border-radius: 8px; overflow: hidden; margin: .8rem 0 .5rem; }
+.stages span { display: block; }
+.legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .8rem; color: var(--dim); }
+.legend i { display: inline-block; width: .62rem; height: .62rem; border-radius: 3px; margin-right: .35rem; }
+
+summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: .5rem; }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: "▸"; color: var(--dim); font-size: .8rem; }
+details[open] summary::before { content: "▾"; }
+
+table { width: 100%; border-collapse: collapse; margin-top: .9rem; font-size: .84rem; }
+th { text-align: left; color: var(--dim); font-weight: 500; padding: .35rem .5rem .35rem 0; }
+td { padding: .35rem .5rem .35rem 0; border-top: 1px solid var(--field); font-variant-numeric: tabular-nums; }
+td.stale { color: var(--warn); }
+td.none { color: var(--muted); }
+
+.trouble {
+  background: var(--alarm);
+  color: var(--text);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin: 0 0 14px;
+  font-size: .9rem;
+}
+
+/* La sezione «come usare l'API»: righe lunghe che non devono far scorrere la
+   pagina intera di lato. */
+h3 { font-size: .95rem; margin: 1.4rem 0 .2rem; font-weight: 600; }
+
+.scroll { overflow-x: auto; }
+.scroll table { min-width: 30rem; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .85em;
+  background: var(--field);
+  border-radius: 6px;
+  padding: .12em .35em;
+}
+
+/* Il pulsante sta fuori dal <pre>, se no scorrerebbe via con il comando. */
+.cmd { position: relative; }
+
+pre {
+  margin: .3rem 0 .9rem;
+  padding: .7rem 5rem .7rem .8rem;
+  background: var(--field);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: .82rem;
+  white-space: pre;
+}
+
+.copy {
+  position: absolute;
+  top: .45rem;
+  right: .45rem;
+  padding: .3rem .6rem;
+  font-size: .75rem;
+  background: var(--card);
+  color: var(--dim);
+}
+
+.copy:active { background: var(--muted); color: var(--text); }
+
+.snippet p { margin: .6rem 0 0; }
+
+footer { margin-top: 1.6rem; }
+footer p { margin: .5rem 0; }
+
+/* Su uno schermo stretto i numeri contano piu' del respiro fra le carte. */
+@media (max-width: 30rem) {
+  .card { padding: 15px; border-radius: 16px; }
+  .huge { font-size: 2.6rem; }
+  #chart { height: 160px; }
+}

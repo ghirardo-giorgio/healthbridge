@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    minSdk e' 29, quindi questa versione vale su ogni telefono che installa
+    l'app e i PNG quadrati accanto sono solo un ripiego per i launcher che
+    leggono l'icona senza passare dall'icona adattiva.
+
+    Il simbolo sta dentro un riquadro di 62dp sulla tela di 108: la maschera
+    del launcher — cerchio, squircle, goccia — puo' tagliare fino a 18dp per
+    lato, e cio' che resta garantito e' il cerchio centrale di 66dp.
+-->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/ic_launcher_background" />
+    <foreground android:drawable="@mipmap/ic_launcher_foreground" />
+    <!-- Android 13 e oltre: l'icona segue il tema Material You del telefono. -->
+    <monochrome android:drawable="@mipmap/ic_launcher_monochrome" />
+</adaptive-icon>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">HealthBridge</string>
+
+    <string name="tagline">Your band\'s data is read from a browser on the same network, or from anything that speaks HTTP. This is where you open the port and hand over the key.</string>
+
+    <string name="status_listening">Listening</string>
+    <string name="status_listening_resting">Listening, at rest</string>
+    <string name="status_paused_until">Paused until %1$s</string>
+    <string name="status_off">Off</string>
+    <string name="address_none" translatable="false">—</string>
+    <string name="no_network">Connect the phone to WiFi, or turn on the hotspot: without a network there is no address to give anyone.</string>
+
+    <string name="btn_start">Start the server</string>
+    <string name="btn_stop">Turn off</string>
+    <string name="btn_copy_link">Copy the link</string>
+    <string name="btn_open_here">Open here</string>
+    <string name="toast_copied">copied</string>
+
+    <string name="qr_failed">the QR could not be drawn, copy the link below</string>
+    <string name="qr_hint">Scan it with the camera of your PC or tablet, or pass the link along by hand.</string>
+
+    <string name="quiet_title">When to keep quiet</string>
+    <string name="quiet_body">Outside its hours the server shuts down completely: no port, no WiFi kept awake. Nothing is lost — Health Connect keeps collecting on its own, and the first read of the morning reads backwards.</string>
+    <string name="quiet_on">Hours active</string>
+    <string name="quiet_always">Always on</string>
+    <string name="quiet_from">Quiet at: %1$s</string>
+    <string name="quiet_to">Back at: %1$s</string>
+    <string name="rest_after">At rest after %1$d minutes without requests. Resting does not close the port: the first read that arrives wakes it up.</string>
+    <string name="minutes_short">%1$d min</string>
+
+    <plurals name="perms_missing">
+        <item quantity="one">%1$d permission missing</item>
+        <item quantity="other">%1$d permissions missing</item>
+    </plurals>
+    <string name="perms_body">Without them the server answers but the readings come back empty. The dialog belongs to Health Connect: grant them all at once.</string>
+    <string name="perms_grant">Grant the permissions</string>
+    <string name="hc_not_responding">Health Connect is not responding</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="port_label">Port</string>
+    <string name="port_save">Save the port</string>
+    <string name="port_range">between 1024 and 65535</string>
+    <string name="token_note">Changing the key locks out whoever was already connected: they will have to read the QR again.</string>
+    <string name="token_renew">Regenerate the key</string>
+
+    <string name="language_title">Language</string>
+    <string name="language_system">System</string>
+    <string name="language_it" translatable="false">Italiano</string>
+    <string name="language_en" translatable="false">English</string>
+
+    <string name="battery_title">The phone can put the server to sleep</string>
+    <string name="battery_body">Exclude HealthBridge from battery optimisation, otherwise after a few hours with the screen off the port stops answering.</string>
+    <string name="battery_exclude">Exclude from optimisation</string>
+
+    <string name="failure_title">The server did not start</string>
+    <string name="port_failed">port %1$d could not be opened</string>
+
+    <string name="notif_channel">Server</string>
+    <string name="notif_channel_desc">Shows that the phone is answering on the network</string>
+    <string name="notif_title">HealthBridge listening</string>
+    <string name="notif_stop">Turn off</string>
+    <string name="notif_no_network">waiting for a network</string>
+    <string name="notif_resting">at rest</string>
+    <string name="notif_quiet_at">quiet at %1$s</string>
+
+</resources>

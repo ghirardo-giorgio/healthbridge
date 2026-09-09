@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Da Android 12 lo splash lo disegna il sistema e non si puo' togliere:
+        l'unica scelta e' come farlo. Senza `windowSplashScreenAnimatedIcon`
+        prende l'icona di lancio, cioe' il cuore sulla piastra bianca, e la
+        ritaglia a cerchio; il fondo scuro lo porta dritto dentro la schermata
+        dell'app senza un cambio di luminosita' in mezzo.
+    -->
+    <style name="Theme.HealthBridge" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowSplashScreenBackground">@color/background</item>
+    </style>
+</resources>
