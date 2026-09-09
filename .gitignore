@@ -5,3 +5,7 @@ local.properties
 .idea/
 .kotlin/
 .claude/settings.local.json
+
+# Le chiavi di firma non entrano mai nel repository.
+*.jks
+*.keystore

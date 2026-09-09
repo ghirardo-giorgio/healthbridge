@@ -23,7 +23,11 @@ any app that writes to Health Connect works the same way.
 
 ## Install
 
-Build and install over USB:
+Download the APK from the [latest
+release](https://github.com/ghirardo-giorgio/healthbridge/releases/latest) and
+install it from the phone, or over USB with `adb install -r`.
+
+To build it yourself instead:
 
 ```bash
 ./gradlew assembleDebug
@@ -311,6 +315,48 @@ shows when they start arriving.
   few hours of an idle phone. This is the worst kind of fault to diagnose:
   everything works while you are watching.
 
+## Releases
+
+Pushing a tag that starts with `v` builds a signed APK and attaches it to a
+GitHub release:
+
+```bash
+git tag v1.1.0
+git push --tags
+```
+
+The version name comes from the tag (`v1.1.0` becomes `1.1.0`) and the version
+code from the run counter, which only ever grows — so each release installs
+over the previous one instead of being refused as a downgrade. The same
+workflow can be started by hand from the Actions tab, and then leaves the APK
+as a run artifact without publishing anything.
+
+The signing key never enters the repository. It lives in four repository
+secrets, and the workflow stops before building if any of them is missing.
+Create the keystore once:
+
+```bash
+keytool -genkeypair -v -keystore healthbridge.jks -alias healthbridge \
+        -keyalg RSA -keysize 2048 -validity 10000
+```
+
+Keep that file and its passwords somewhere safe and outside the working copy:
+lose them and you cannot publish an update that installs over the ones people
+already have — Android will refuse an APK signed by a different key. Then, from
+*Settings → Secrets and variables → Actions*, add:
+
+| Secret | Value |
+| --- | --- |
+| `KEYSTORE_BASE64` | `base64 -w0 healthbridge.jks` |
+| `KEYSTORE_PASSWORD` | the keystore password |
+| `KEY_ALIAS` | `healthbridge` |
+| `KEY_PASSWORD` | the key password |
+
+Locally none of this applies: with no keystore in the environment the build
+defines no signing config at all, and `./gradlew assembleRelease` produces the
+usual unsigned APK.
+
 ## License
+
 
 MIT — see [LICENSE](LICENSE).

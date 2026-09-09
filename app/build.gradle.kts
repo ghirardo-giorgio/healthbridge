@@ -16,11 +16,38 @@ android {
         applicationId = "com.oberon.healthbridge"
         minSdk = 29
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+
+        // In locale restano 1 e "1.0". Su GitHub Actions il workflow passa il
+        // nome dal tag e il numero dal contatore delle run, che cresce sempre:
+        // così ogni release si installa sopra la precedente invece di essere
+        // rifiutata come downgrade.
+        versionCode = (System.getenv("HEALTHBRIDGE_VERSION_CODE") ?: "1").toInt()
+        versionName = System.getenv("HEALTHBRIDGE_VERSION_NAME") ?: "1.0"
     }
 
-    buildTypes { release { isMinifyEnabled = false } }
+    // Il keystore non sta nel repository: arriva dall'ambiente, che in locale è
+    // vuoto e su GitHub Actions è scritto dai secrets. Senza la variabile non
+    // si crea nessuna signingConfig e `assembleRelease` produce come sempre un
+    // APK non firmato — la build di chi clona il progetto non ha bisogno di
+    // possedere la chiave.
+    val keystore = System.getenv("HEALTHBRIDGE_KEYSTORE")
+    signingConfigs {
+        if (keystore != null) {
+            create("release") {
+                storeFile = file(keystore)
+                storePassword = System.getenv("HEALTHBRIDGE_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("HEALTHBRIDGE_KEY_ALIAS")
+                keyPassword = System.getenv("HEALTHBRIDGE_KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            if (keystore != null) signingConfig = signingConfigs.getByName("release")
+        }
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
